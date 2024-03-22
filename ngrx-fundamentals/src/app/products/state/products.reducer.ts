@@ -1,14 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
-import { Product } from '../product.model';
 import { ProductsAPIActions, ProductsPageActions } from './products.actions';
+import { ProductsState } from './products.state';
 
-export interface ProductState {
-  showProductCode: boolean;
-  loading: boolean;
-  products: Product[];
-}
-
-const initialState: ProductState = {
+const initialState: ProductsState = {
   showProductCode: true,
   loading: false,
   products: [],
