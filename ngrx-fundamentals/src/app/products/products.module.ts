@@ -7,7 +7,7 @@ import { ProductPageComponent } from './product-page/product-page.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsPageComponent } from './products-page/products-page.component';
 import { ProductsRoutingModule } from './products-routing.module';
-import { productsReducer } from './state/product.reducer';
+import { productsReducer } from './state/products.reducer';
 
 @NgModule({
   declarations: [
