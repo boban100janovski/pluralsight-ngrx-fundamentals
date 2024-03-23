@@ -4,4 +4,5 @@ export interface ProductsState {
   showProductCode: boolean;
   loading: boolean;
   products: Product[];
+  errorMessage: string;
 }

@@ -15,3 +15,8 @@ export const selectProductsShowProductsCode = createSelector(
 );
 
 export const selectProductsTotal = createSelector(selectProducts, sumProducts);
+
+export const selectProductsErrorMessage = createSelector(
+  selectProductsState,
+  (state) => state.errorMessage
+);

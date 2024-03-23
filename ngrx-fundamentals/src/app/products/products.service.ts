@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Product } from './product.model';
+import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { Product } from './product.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,13 +11,11 @@ export class ProductsService {
 
   constructor(private http: HttpClient) {}
 
-  getAll() {
-    return this.http
-      .get<Product[]>(this.productsAPIUrl)
-      .pipe(catchError(this.handleError));
+  getAll(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.productsAPIUrl).pipe(catchError(this.handleError));
   }
 
-  getById(id: number) {
+  getById(id: number): Observable<Product> {
     return this.http
       .get<Product>(`${this.productsAPIUrl}/${id}`)
       .pipe(catchError(this.handleError));
@@ -30,9 +28,7 @@ export class ProductsService {
   }
 
   update(product: Product): Observable<Product> {
-    return this.http
-      .put<Product>(this.productsAPIUrl, product)
-      .pipe(catchError(this.handleError));
+    return this.http.put<Product>(this.productsAPIUrl, product).pipe(catchError(this.handleError));
   }
 
   delete(id: number): Observable<unknown> {
@@ -41,8 +37,6 @@ export class ProductsService {
   }
 
   private handleError({ status }: HttpErrorResponse) {
-    return throwError(
-      () => `${status}: Something bad happened.`
-    );
+    return throwError(() => `${status}: Something bad happened.`);
   }
 }
