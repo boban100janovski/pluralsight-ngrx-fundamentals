@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, concatMap, exhaustMap, map, mergeMap, of, switchMap } from 'rxjs';
+import { catchError, concatMap, exhaustMap, map, mergeMap, of } from 'rxjs';
 import { ProductsService } from '../products.service';
 import { ProductsAPIActions, ProductsPageActions } from './products.actions';
 
@@ -12,7 +12,7 @@ export class ProductEffects {
   readonly loadProducts$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ProductsPageActions.loadProducts),
-      concatMap(() =>
+      exhaustMap(() =>
         this.productsService.getAll().pipe(
           map((products) => ProductsAPIActions.productsLoadedSuccess({ products })),
           catchError((error) => of(ProductsAPIActions.productsLoadedFail({ message: error })))
@@ -24,9 +24,9 @@ export class ProductEffects {
   readonly addProduct$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ProductsPageActions.addProduct),
-      exhaustMap(({ product }) =>
+      concatMap(({ product }) =>
         this.productsService.add(product).pipe(
-          map((product) => ProductsAPIActions.productAddedSuccess({ product })),
+          map((newProduct) => ProductsAPIActions.productAddedSuccess({ product: newProduct })),
           catchError((error) => of(ProductsAPIActions.productAddedFail({ message: error })))
         )
       )
@@ -36,7 +36,7 @@ export class ProductEffects {
   readonly updateProduct$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ProductsPageActions.updateProduct),
-      switchMap(({ product }) =>
+      concatMap(({ product }) =>
         this.productsService.update(product).pipe(
           map((product) => ProductsAPIActions.productUpdatedSuccess({ product })),
           catchError((error) => of(ProductsAPIActions.productAddedFail({ message: error })))
@@ -50,7 +50,7 @@ export class ProductEffects {
       ofType(ProductsPageActions.deleteProduct),
       mergeMap(({ id }) =>
         this.productsService.delete(id).pipe(
-          map((product) => ProductsAPIActions.productDeletedSuccess({ id })),
+          map(() => ProductsAPIActions.productDeletedSuccess({ id })),
           catchError((error) => of(ProductsAPIActions.productDeletedFail({ message: error })))
         )
       )
