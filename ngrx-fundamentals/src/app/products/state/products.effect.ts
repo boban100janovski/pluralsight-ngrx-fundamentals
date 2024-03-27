@@ -41,7 +41,6 @@ export class ProductEffects implements OnInitEffects {
       concatMap(({ product }) =>
         this.productsService.update(product).pipe(
           map(() => {
-            console.log('product', product);
             return ProductsAPIActions.productUpdatedSuccess({ product });
           }),
           catchError((error) => of(ProductsAPIActions.productUpdatedFail({ message: error })))
