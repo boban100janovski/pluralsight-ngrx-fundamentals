@@ -27,6 +27,7 @@ import { InMemoryDataService } from './in-memory-data.service';
       name: 'NgRx Demo App',
       maxAge: 25,
       logOnly: environment.production,
+      connectInZone: false,
     }),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
