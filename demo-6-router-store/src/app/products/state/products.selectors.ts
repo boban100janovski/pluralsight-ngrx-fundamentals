@@ -1,38 +1,17 @@
-import { getRouterSelectors } from '@ngrx/router-store';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { sumProducts } from 'src/app/utils/sum-products';
-import { ProductsState } from './products.reducer';
+import { Component } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideRouter, RouterOutlet } from '@angular/router';
 
-export const selectProductsState =
-  createFeatureSelector<ProductsState>('products');
+import { routes } from './routes';
 
-export const selectProductsShowProductCode = createSelector(
-  selectProductsState,
-  ({ showProductCode }) => showProductCode
-);
+@Component({
+  selector: 'my-app',
+  standalone: true,
+  imports: [RouterOutlet],
+  template: ` <router-outlet></router-outlet> `,
+})
+export class App {}
 
-export const selectProductsLoading = createSelector(
-  selectProductsState,
-  ({ loading }) => loading
-);
-
-export const selectProducts = createSelector(
-  selectProductsState,
-  ({ products }) => products
-);
-
-export const selectProductsErrorMessage = createSelector(
-  selectProductsState,
-  ({ errorMessage }) => errorMessage
-);
-
-export const selectProductsTotal = createSelector(selectProducts, sumProducts);
-
-export const { selectRouteParams } = getRouterSelectors();
-
-export const selectProductById = createSelector(
-  selectRouteParams,
-  selectProductsState,
-  ({ id }, { products }) =>
-    products.find((product) => product.id === parseInt(id))
-);
+bootstrapApplication(App, {
+  providers: [provideRouter(routes)],
+});

@@ -1,3 +1,4 @@
+import { getRouterSelectors } from '@ngrx/router-store';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Features } from 'src/app/core/features';
 import { sumProducts } from 'src/app/utils/sum-products';
@@ -5,13 +6,13 @@ import { ProductsState } from './products.state';
 
 export const selectProductsState = createFeatureSelector<ProductsState>(Features.Products);
 
-export const selectProducts = createSelector(selectProductsState, (state) => state.products);
+export const selectProductsLoading = createSelector(selectProductsState, ({ loading }) => loading);
 
-export const selectProductsLoading = createSelector(selectProductsState, (state) => state.loading);
+export const selectProducts = createSelector(selectProductsState, ({ products }) => products);
 
-export const selectProductsShowProductsCode = createSelector(
+export const selectProductsShowProductCode = createSelector(
   selectProductsState,
-  (state) => state.showProductCode
+  ({ showProductCode }) => showProductCode
 );
 
 export const selectProductsTotal = createSelector(selectProducts, sumProducts);
@@ -20,3 +21,22 @@ export const selectProductsErrorMessage = createSelector(
   selectProductsState,
   (state) => state.errorMessage
 );
+
+export const {
+  selectCurrentRoute, // select the current route
+  selectFragment, // select the current route fragment
+  selectQueryParams, // select the current route query params
+  selectQueryParam, // factory function to select a query param
+  selectRouteParams, // select the current route params
+  selectRouteParam, // factory function to select a route param
+  selectRouteData, // select the current route data
+  selectRouteDataParam, // factory function to select a route data param
+  selectUrl, // select the current url
+  selectTitle, // select the title if available
+} = getRouterSelectors();
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const selectProductById = (selectRouteParams: any) =>
+  createSelector(selectProducts, selectRouteParams, (products, { id }) =>
+    products.find((product) => product.id === parseInt(id))
+  );
