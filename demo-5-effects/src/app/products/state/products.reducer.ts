@@ -78,9 +78,7 @@ export const productsReducer = createReducer(
   on(ProductsAPIActions.productDeletedSuccess, (state, { id }) => ({
     ...state,
     loading: false,
-    products: state.products.filter(
-      (existingProduct) => existingProduct.id !== id
-    ),
+    products: state.products.filter((existingProduct) => existingProduct.id !== id),
   })),
   on(ProductsAPIActions.productDeletedFail, (state, { message }) => ({
     ...state,

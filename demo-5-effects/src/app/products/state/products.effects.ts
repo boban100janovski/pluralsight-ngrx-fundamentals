@@ -11,12 +11,8 @@ export class ProductEffects {
       ofType(ProductsPageActions.loadProducts),
       exhaustMap(() =>
         this.productsService.getAll().pipe(
-          map((products) =>
-            ProductsAPIActions.productsLoadedSuccess({ products })
-          ),
-          catchError((error) =>
-            of(ProductsAPIActions.productsLoadedFail({ message: error }))
-          )
+          map((products) => ProductsAPIActions.productsLoadedSuccess({ products })),
+          catchError((error) => of(ProductsAPIActions.productsLoadedFail({ message: error })))
         )
       )
     )
@@ -27,12 +23,8 @@ export class ProductEffects {
       ofType(ProductsPageActions.addProduct),
       concatMap(({ product }) =>
         this.productsService.add(product).pipe(
-          map((newProduct) =>
-            ProductsAPIActions.productAddedSuccess({ product: newProduct })
-          ),
-          catchError((error) =>
-            of(ProductsAPIActions.productAddedFail({ message: error }))
-          )
+          map((newProduct) => ProductsAPIActions.productAddedSuccess({ product: newProduct })),
+          catchError((error) => of(ProductsAPIActions.productAddedFail({ message: error })))
         )
       )
     )
@@ -44,9 +36,7 @@ export class ProductEffects {
       concatMap(({ product }) =>
         this.productsService.update(product).pipe(
           map(() => ProductsAPIActions.productUpdatedSuccess({ product })),
-          catchError((error) =>
-            of(ProductsAPIActions.productUpdatedFail({ message: error }))
-          )
+          catchError((error) => of(ProductsAPIActions.productUpdatedFail({ message: error })))
         )
       )
     )
@@ -60,14 +50,9 @@ export class ProductEffects {
           .delete(id)
           .pipe(map(() => ProductsAPIActions.productDeletedSuccess({ id })))
       ),
-      catchError((error) =>
-        of(ProductsAPIActions.productDeletedFail({ message: error }))
-      )
+      catchError((error) => of(ProductsAPIActions.productDeletedFail({ message: error })))
     )
   );
 
-  constructor(
-    private productsService: ProductsService,
-    private actions$: Actions
-  ) {}
+  constructor(private productsService: ProductsService, private actions$: Actions) {}
 }
