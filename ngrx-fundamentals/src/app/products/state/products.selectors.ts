@@ -35,8 +35,8 @@ export const {
   selectTitle, // select the title if available
 } = getRouterSelectors();
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const selectProductById = (selectRouteParams: any) =>
-  createSelector(selectProducts, selectRouteParams, (products, { id }) =>
-    products.find((product) => product.id === parseInt(id))
-  );
+export const selectProductById = createSelector(
+  selectRouteParams,
+  selectProductsState,
+  ({ id }, { products }) => products.find((product) => product.id === parseInt(id))
+);
