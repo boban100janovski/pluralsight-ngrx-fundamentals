@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, OnInitEffects, createEffect, ofType } from '@ngrx/effects';
-import { catchError, concatMap, exhaustMap, map, mergeMap, of } from 'rxjs';
+import { catchError, concatMap, exhaustMap, map, mergeMap, of, tap } from 'rxjs';
 import { ProductsService } from '../products.service';
 import { ProductsAPIActions, ProductsPageActions } from './products.actions';
 
@@ -39,7 +40,10 @@ export class ProductEffects implements OnInitEffects {
       ofType(ProductsPageActions.updateProduct),
       concatMap(({ product }) =>
         this.productsService.update(product).pipe(
-          map((product) => ProductsAPIActions.productUpdatedSuccess({ product })),
+          map(() => {
+            console.log('product', product);
+            return ProductsAPIActions.productUpdatedSuccess({ product });
+          }),
           catchError((error) => of(ProductsAPIActions.productUpdatedFail({ message: error })))
         )
       )
@@ -58,5 +62,23 @@ export class ProductEffects implements OnInitEffects {
     );
   });
 
-  constructor(private productsService: ProductsService, private actions$: Actions) {}
+  readonly redirectToProductsPage$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(
+          ProductsAPIActions.productAddedSuccess,
+          ProductsAPIActions.productUpdatedSuccess,
+          ProductsAPIActions.productDeletedSuccess
+        ),
+        tap(() => this.router.navigate(['/products']))
+      );
+    },
+    { dispatch: false }
+  );
+
+  constructor(
+    private router: Router,
+    private productsService: ProductsService,
+    private actions$: Actions
+  ) {}
 }
