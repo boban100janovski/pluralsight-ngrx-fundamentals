@@ -7,6 +7,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { environment } from 'src/environments/environment';
 
 import { EffectsModule } from '@ngrx/effects';
+import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -19,13 +20,16 @@ import { InMemoryDataService } from './in-memory-data.service';
     AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({
+      router: routerReducer,
+    }),
     StoreDevtoolsModule.instrument({
       name: 'NgRx Demo App',
       maxAge: 25,
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
