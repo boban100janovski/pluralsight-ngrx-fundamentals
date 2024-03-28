@@ -11,6 +11,12 @@ export class ProductEffects implements OnInitEffects {
     return ProductsPageActions.loadProducts();
   }
 
+  constructor(
+    private router: Router,
+    private productsService: ProductsService,
+    private actions$: Actions
+  ) {}
+
   readonly loadProducts$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(ProductsPageActions.loadProducts),
@@ -41,7 +47,9 @@ export class ProductEffects implements OnInitEffects {
       concatMap(({ product }) =>
         this.productsService.update(product).pipe(
           map(() => {
-            return ProductsAPIActions.productUpdatedSuccess({ product });
+            return ProductsAPIActions.productUpdatedSuccess({
+              update: { id: product.id, changes: product },
+            });
           }),
           catchError((error) => of(ProductsAPIActions.productUpdatedFail({ message: error })))
         )
@@ -74,10 +82,4 @@ export class ProductEffects implements OnInitEffects {
     },
     { dispatch: false }
   );
-
-  constructor(
-    private router: Router,
-    private productsService: ProductsService,
-    private actions$: Actions
-  ) {}
 }

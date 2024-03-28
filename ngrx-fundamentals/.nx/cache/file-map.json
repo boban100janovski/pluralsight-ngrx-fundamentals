@@ -1,0 +1,248 @@
+{
+  "version": "6.0",
+  "nxVersion": "18.1.3",
+  "deps": {
+    "@angular/animations": "^17.2.1",
+    "@angular/common": "^17.2.1",
+    "@angular/compiler": "^17.2.1",
+    "@angular/core": "^17.2.1",
+    "@angular/forms": "^17.2.1",
+    "@angular/platform-browser": "^17.2.1",
+    "@angular/platform-browser-dynamic": "^17.2.1",
+    "@angular/router": "^17.2.1",
+    "@ngrx/effects": "^17.1.1",
+    "@ngrx/entity": "^17.1.1",
+    "@ngrx/eslint-plugin": "^17.1.1",
+    "@ngrx/router-store": "^17.1.1",
+    "@ngrx/store": "^17.1.1",
+    "@ngrx/store-devtools": "^17.1.1",
+    "angular-in-memory-web-api": "^0.17.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.4",
+    "@angular-devkit/build-angular": "^17.2.1",
+    "@angular-eslint/builder": "17.3.0",
+    "@angular-eslint/eslint-plugin": "17.3.0",
+    "@angular-eslint/eslint-plugin-template": "17.3.0",
+    "@angular-eslint/schematics": "17.3.0",
+    "@angular-eslint/template-parser": "17.3.0",
+    "@angular/cli": "~17.3.2",
+    "@angular/compiler-cli": "^17.2.1",
+    "@ngrx/schematics": "^17.1.1",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "eslint": "^8.57.0",
+    "typescript": "~5.3.3"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "6686520031028425313"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "3111840860154875561"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "9210123818707998875"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "3395189204293871444"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "2517523981853513032"
+      },
+      {
+        "file": ".vscode/settings.json",
+        "hash": "17230470408251226178"
+      },
+      {
+        "file": "angular.json",
+        "hash": "8833851998309527462"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "9267240670316617007"
+      },
+      {
+        "file": "package.json",
+        "hash": "14525560672986916696"
+      },
+      {
+        "file": "src/app/app-routing.module.ts",
+        "hash": "4289751989631548517"
+      },
+      {
+        "file": "src/app/app.component.css",
+        "hash": "2268292803390456124"
+      },
+      {
+        "file": "src/app/app.component.html",
+        "hash": "5557270257939703098"
+      },
+      {
+        "file": "src/app/app.component.ts",
+        "hash": "559234366744687101"
+      },
+      {
+        "file": "src/app/app.module.ts",
+        "hash": "10079842743986058503"
+      },
+      {
+        "file": "src/app/core/features.ts",
+        "hash": "14411770228598298807"
+      },
+      {
+        "file": "src/app/home/home.component.css",
+        "hash": "10324636835827680807"
+      },
+      {
+        "file": "src/app/home/home.component.html",
+        "hash": "15755536212633385460"
+      },
+      {
+        "file": "src/app/home/home.component.ts",
+        "hash": "9455176536278231928"
+      },
+      {
+        "file": "src/app/in-memory-data.service.ts",
+        "hash": "3890984203601610523"
+      },
+      {
+        "file": "src/app/products/product-edit/product-edit.component.css",
+        "hash": "16814039403087840782"
+      },
+      {
+        "file": "src/app/products/product-edit/product-edit.component.html",
+        "hash": "7558025081693080452"
+      },
+      {
+        "file": "src/app/products/product-edit/product-edit.component.ts",
+        "hash": "3397864060305727640"
+      },
+      {
+        "file": "src/app/products/product-page/product-page.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/products/product-page/product-page.component.html",
+        "hash": "12372200447717402702"
+      },
+      {
+        "file": "src/app/products/product-page/product-page.component.ts",
+        "hash": "12707092639871878278"
+      },
+      {
+        "file": "src/app/products/product.model.ts",
+        "hash": "13982224925428912771"
+      },
+      {
+        "file": "src/app/products/products-list/products-list.component.css",
+        "hash": "4203842288129391542"
+      },
+      {
+        "file": "src/app/products/products-list/products-list.component.html",
+        "hash": "9575370773761416821"
+      },
+      {
+        "file": "src/app/products/products-list/products-list.component.ts",
+        "hash": "4664929688376642371"
+      },
+      {
+        "file": "src/app/products/products-page/products-page.component.css",
+        "hash": "9763202194700755974"
+      },
+      {
+        "file": "src/app/products/products-page/products-page.component.html",
+        "hash": "7798506973921577696"
+      },
+      {
+        "file": "src/app/products/products-page/products-page.component.ts",
+        "hash": "7159829906430821673"
+      },
+      {
+        "file": "src/app/products/products-routing.module.ts",
+        "hash": "372920032860690876"
+      },
+      {
+        "file": "src/app/products/products.module.ts",
+        "hash": "12352422633113695865"
+      },
+      {
+        "file": "src/app/products/products.service.ts",
+        "hash": "515362779003966331"
+      },
+      {
+        "file": "src/app/products/state/products.actions.ts",
+        "hash": "14476265839142570203"
+      },
+      {
+        "file": "src/app/products/state/products.effect.ts",
+        "hash": "11565048776691655567"
+      },
+      {
+        "file": "src/app/products/state/products.reducer.ts",
+        "hash": "9399796196921272947"
+      },
+      {
+        "file": "src/app/products/state/products.selectors.ts",
+        "hash": "6881391368719043953"
+      },
+      {
+        "file": "src/app/products/state/products.state.ts",
+        "hash": "3185766785329125110"
+      },
+      {
+        "file": "src/app/utils/sum-products.ts",
+        "hash": "12729027812814410679"
+      },
+      {
+        "file": "src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/assets/ngrx-logo.svg",
+        "hash": "16715633450899710158"
+      },
+      {
+        "file": "src/environments/environment.development.ts",
+        "hash": "1135292433917692033"
+      },
+      {
+        "file": "src/environments/environment.ts",
+        "hash": "10220522844224226756"
+      },
+      {
+        "file": "src/favicon.ico",
+        "hash": "3464744996580215640"
+      },
+      {
+        "file": "src/index.html",
+        "hash": "1749078656137150719"
+      },
+      {
+        "file": "src/main.ts",
+        "hash": "12246588107753938993"
+      },
+      {
+        "file": "src/styles.css",
+        "hash": "11825766832736464582"
+      },
+      {
+        "file": "tsconfig.app.json",
+        "hash": "17337579397915052279"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "1047940026627514556"
+      }
+    ]
+  }
+}
